@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + : Play Movie</title>
+    <script src="{% static "bootstrap/jquery-3.5.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.validate.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            background-color: black;
+        }
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 1000px;
+        }
+
+        #stk {
+            position: sticky;
+            overflow: hidden;
+            top: 0;
+            width: 99%;
+            z-index: 10;
+        }
+
+        h4 {
+            color: white;
+        }
+
+        span {
+            color: gray;
+        }
+
+        #firstimage {
+            width: 100%;
+            height: 100%;
+            float: right;
+            margin-top: -80px;
+
+            background-image: url("../static/media/{{ d.coverimage }}");
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 1;
+
+        }
+
+        .tableheigh {
+            height: 40px;;
+        }
+
+        .tablespace {
+            height: 10px;
+        }
+
+        .imagestyle {
+            width: 238px;
+            height: 348px;
+
+        }
+
+        .divimagestyle {
+            width: 240px;
+            height: 350px;
+            margin-right: 10px
+        }
+
+        #movietemp:hover {
+
+            border-width: 1px;
+            border-color: red;
+            border-style: solid;
+        }
+
+        #scroller {
+            width: 100%;
+            overflow: auto;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 0 grey;
+            border-radius: 1px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: rgba(55, 54, 53, 0.93);
+            border-radius: 10px;
+
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b30000;
+
+        }
+
+        .bt:hover {
+            transition: 0.5s;
+            color: rgba(55, 54, 53, 0.93);
+            background-color: white;
+        }
+
+        .bt {
+            transition: 0.5s;
+            color: white;
+            background-color: rgba(55, 54, 53, 0.93)
+        }
+
+        .gt:hover {
+            transition: 0.5s;
+            color: rgba(55, 54, 53, 0.93);
+
+        }
+
+        .gt {
+            transition: 0.5s;
+            color: white;
+
+        }
+
+        #textwrap:hover {
+            transition: 0.5s;
+            background: rgba(0, 0, 0, 0.5)
+        }
+
+        #textwrap {
+            transition: 0.5s;
+            background: rgba(0, 0, 0, 0)
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#myform2').validate();
+             $('#myform3').validate();
+        });
+    </script>
+</head>
+<body>
+<div id="dynamic">
+    <div style="width: 100%" id="stk">
+        {% include "usertabs.html" %}
+    </div>
+    <div style="width: 100%;height:100%">
+        <div id="firstimage" class="changable">
+
+            <div id="textwrap" style="margin-top: 200px;margin-left:20px;width: 640px;padding: 20px;">
+                <h1 style="color: gold;font-family: 'Cambria Math';font-size: 70px;">{{ d.moviename }}</h1>
+
+                <h4 style="width:600px; line-height: 1.6; text-align: justify ">{{ d.description }}</h4>
+
+                <br>
+                <h4><span>Genre&nbsp;&nbsp;&nbsp;&nbsp;: </span>{{ d.genre }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Language : </span>{{ d.language }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Runtime : </span>{{ d.Runtime }}
+                    Minutes</h4>
+                <h4><span>Director : </span>{{ d.director }}</h4>
+                <h4><span>Stars&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: </span>{{ d.cast }}</h4>
+                <h4><span>Smart Rating &nbsp;: </span>{{ smartreview }}</h4>
+                <br>
+                <button type="button" class="btn bt "
+                        onclick="window.open('usermoviewatch?movieid={{ d.movieid }}','_self')"><i
+                        class="fa fa-play gt"></i> Play
+                </button>
+                <button type="button" class="btn  bt"
+                        onclick="window.open('usermylist?movieid={{ d.movieid }}','_self')"><i
+                        class="fa fa-plus gt"></i> My List
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div style="width:100%;margin-top: -50px" class="container">
+        <div style="margin-left:20px;padding: 20px; ">
+            <table style="width: 100%">
+                <tr>
+                    <th>
+                        <h4>Reviews</h4>
+                    </th>
+                    <th style="width: 600px">
+
+                    </th>
+                </tr>
+
+                {% if t == 1 %}
+                    <form method="post" action="addreview" id="myform2">
+                        {% csrf_token %}
+                        <tr>
+                            <th>
+                                <h4>Write a review </h4>
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+
+                        <tr>
+
+                            <td>
+                          <textarea rows="3" cols="1" maxlength="300" class="form-control " data-rule-required="true"
+                                    data-msg-required="Please enter movie review"
+                                    name="txtdescription" required
+                                    style="resize: none; background-color: rgba(46,45,44,0.91);color:white ">
+                          </textarea>
+                            </td>
+                            <td>
+                                <input type="hidden" name="type" value="movie">
+                                <input type="hidden" name="id" value="{{ d.movieid }}">
+                            </td>
+                        </tr>
+                        <tr style="height: 20px">
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn  bt">Post</button>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </form>
+                {% elif t == 2 %}
+                    <form method="post" action="editreview" id="myform3">
+                    {% csrf_token %}
+                        <tr>
+                            <th>
+                                <h4>Your Review </h4>
+                            </th>
+                            <th>
+
+                            </th>
+                        </tr>
+                        <tr>
+
+                            <td>
+                          <textarea rows="3" cols="1" maxlength="300" class="form-control " data-rule-required="true"
+                                    data-msg-required="Please enter movie review"
+                                    name="txtdescription" required
+                                    style="resize: none; background-color: rgba(46,45,44,0.91);color:white ">{{ y }}
+                          </textarea>
+                            </td>
+                            <td>
+                                <input type="hidden" name="type" value="movie">
+                                <input type="hidden" name="id" value="{{ d.movieid }}">
+                            </td>
+                        </tr>
+                        <tr style="height: 20px">
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button type="submit" class="btn  bt">Edit</button>
+
+                                <button type="button" class="btn  bt"
+                                        onclick="window.open('reviewdelete?reviewid={{ reviewid }}','_self')">Delete
+                                </button>
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                    </form>
+                {% endif %}
+            {% for r in totalreviews %}
+                {% if forloop.counter == 1 %}
+                     <tr style="height: 30px">
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                    <tr>
+                    <th>
+                        <h4>Reviews from other users</h4>
+                    </th>
+                    </tr>
+                {% endif %}
+                <tr style="height: 20px">
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+                <tr >
+                    <td>
+                    <div class="form-control" style="background-color: rgba(46,45,44,0.91); height: 100% " >
+                        <label style="color: white">{{ r.review }}</label>
+                    </div>
+
+                    </td>
+                    <td>
+                        <label style="color: rgba(75,74,73,0.9);margin-left: 25px"><i>{{ r.nature}}</i> Review</label>
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

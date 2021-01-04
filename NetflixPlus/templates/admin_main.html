@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + - Admin</title>
+    <script src="{% static "bootstrap/jquery-3.5.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.validate.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 1000px;
+        }
+
+        #table_main {
+
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="dynamic">
+    {% include "admin_uppertabs.html" %}
+    <div class="container">
+        <div align="right" style="background-color: red;width: 100%">
+            <h2 style=" color: white;margin-right: 20px">Welcome {{ ar.msg }}</h2>
+        </div>
+        <table border="black" class="table" id="table_main">
+
+            <tr>
+                <td width="200px" style="background-color: red">
+                    {% include "admin_tabs.html" %}
+                </td>
+                  <td>
+                    <div align="center">
+
+                        <table width="100%">
+                            <tr>
+                                <td colspan="2">
+                                    <div align="center">
+                                        <h2>Welcome to Netflix + Admin portal</h2>
+                                        <h3> Do enjoy some statistics while you access the portal</h3>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr style="height: 100px">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>Users online : &nbsp;{{ user.0 }}</h3>
+                                </td>
+                                <td>
+                                    <h3>Active Subscriptions : &nbsp;{{ subs.0 }}</h3>
+                                </td>
+                            </tr>
+                             <tr style="height: 50px">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>Registerd movies :  &nbsp;{{ movies.0 }}</h3>
+                                </td>
+                                <td>
+                                    <h3>Registerd Tv shows :  &nbsp;{{ tvshows.0 }}</h3>
+                                </td>
+                            </tr>
+                             <tr style="height: 50px">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>Movies genres: &nbsp;{{ Gmovies.0 }}</h3>
+                                </td>
+                                <td>
+                                   <h3>Tv shows genres: &nbsp;{{ Gtvshows.0 }}</h3>
+                                </td>
+                            </tr>
+                            <tr style="height: 50px">
+                                <td>
+
+                                </td>
+                                <td>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h3>Total registed users: &nbsp;{{ users.0 }}</h3>
+                                </td>
+                                <td>
+
+                                </td>
+                        </table>
+
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</body>
+</html>

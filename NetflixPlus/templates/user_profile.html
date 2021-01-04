@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + : My Profile</title>
+    <script src="{% static "bootstrap/jquery-3.5.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.validate.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            background-color: black;
+        }
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 1000px;
+        }
+
+        #stk {
+            position: sticky;
+            overflow: hidden;
+            top: 0;
+            width: 99%;
+            z-index: 10;
+        }
+
+        h4 {
+            color: white;
+        }
+
+        span {
+            color: gray;
+        }
+
+
+        .tableheigh {
+            height: 40px;;
+        }
+
+        .tablespace {
+            height: 10px;
+        }
+
+        .imagestyle {
+            width: 238px;
+            height: 348px;
+
+        }
+
+        .divimagestyle {
+            width: 240px;
+            height: 350px;
+            margin-right: 10px
+        }
+
+        #movietemp:hover {
+
+            border-width: 1px;
+            border-color: red;
+            border-style: solid;
+        }
+
+        #scroller {
+            width: 100%;
+            overflow: auto;
+        }
+
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 0 grey;
+            border-radius: 1px;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: rgba(55, 54, 53, 0.93);
+            border-radius: 10px;
+
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b30000;
+
+        }
+
+        .bt:hover {
+            transition: 0.5s;
+            color: rgba(55, 54, 53, 0.93);
+            background-color: white;
+        }
+
+        .bt {
+            transition: 0.5s;
+            color: white;
+            background-color: rgba(55, 54, 53, 0.93)
+        }
+
+
+        #div2 {
+            width: 500px;
+            padding: 20px;
+            display: none;
+
+        }
+
+        #div3 {
+            width: 500px;
+            padding: 20px;
+            display: none;
+
+        }
+
+        .error {
+            color: white;
+        }
+    </style>
+    <script>
+
+        function f() {
+            document.getElementById("div2").style.display = "block";
+            document.getElementById("div3").style.display = "none";
+        }
+
+        function h() {
+            document.getElementById("div3").style.display = "block";
+            document.getElementById("div2").style.display = "none";
+        }
+
+        function f1() {
+            document.getElementById("div2").style.display = "block";
+            document.getElementById("div3").style.display = "none";
+            document.getElementById("btnsubscription").disabled = true;
+        }
+
+        function h1() {
+            document.getElementById("div3").style.display = "block";
+            document.getElementById("div2").style.display = "none";
+            document.getElementById("btnchangepassword").disabled = true;
+        }
+
+        function t() {
+            var x = document.getElementById("txtplan").value;
+            if (x == "Basic") {
+                document.getElementById("amountpay").innerHTML = {{ d.price1 }};
+            }
+            if (x == "Standard") {
+                document.getElementById("amountpay").innerHTML = {{ d.price2 }};
+            }
+            if (x == "Premium") {
+                document.getElementById("amountpay").innerHTML = {{ d.price3 }};
+            }
+
+
+        };
+
+        $(document).ready(function () {
+            $('#myform').validate();
+            {% if t == 3 %}
+                document.getElementById("amountpay").innerHTML = {{ d.price1 }};
+            {% endif %}
+        });
+
+        function g() {
+            $('#myform').validate();
+            var password = document.getElementById("txtnewpassword").value;
+            var confirmPassword = document.getElementById("txtconfirmpassword").value;
+
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            return true;
+
+        };
+
+    </script>
+</head>
+<body>
+<div id="dynamic">
+    <div style="width: 100%" id="stk">
+        {% include "usertabs.html" %}
+    </div>
+    <div style="width: 100%;height:100%">
+        <table style="text-align: justify">
+            <tr style="height: 170px">
+                <td>
+
+                </td>
+                <td style="width: 200px">
+
+                </td>
+                <td>
+
+                </td>
+            </tr>
+            <tr style="height: 400px">
+                <td style="min-width: 500px">
+
+                    <div style="margin-left: 40px">
+                        <h1 style="color: gold;font-family: 'Cambria Math';font-size: 70px;">{{ d.name }}</h1>
+
+                        <br>
+                        <h4><span>Phone Number&nbsp;:</span>{{ d.phone }} </h4>
+                        <h4><span>Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</span>{{ d.email }}&nbsp;
+                        </h4>
+
+                        <br>
+
+                        <button type="button" class="btn bt " id="btnchangepassword"
+                                onclick="f()"> Change Password
+                        </button>
+                        <button type="button" class="btn bt " id="btnsubscription"
+                                onclick="h()"> My Subscription
+                        </button>
+
+                        {% if k == 1 %}
+                            <h4>{{ i.msg2 }}</h4>
+                        {% endif %}
+                        {% if k == 2 %}
+                            <h4>{{ i.msg2 }}</h4>
+                        {% endif %}
+                        <br><br>
+                        <button id="signout" type="button" class="btn  bt "
+                            onclick="window.open('userlogout','_self')"> Sign out
+                    </button>
+                    </div>
+
+                </td>
+                <td style="width: 200px">
+
+                </td>
+                <td>
+                    <div id="div2">
+                        {% if t == 0 %}
+                            <form action="generateotp" id="myform2" method="post">
+                                {% csrf_token %}
+                                <h4><span>Old Password&nbsp;:</span></h4><input type="password" id="txtoldpassword"
+                                                                                name="txtoldpassword"
+                                                                                class="form-control"
+                                                                                required>
+                                <h4>{{ i.msg }}</h4>
+                                <br>
+                                <button id="btnotp" type="submit" class="btn bt "
+                                        onclick="g()"> Generate OTP
+                                </button>
+                                <button id="btncancel" type="button" class="btn bt "
+                                        onclick="window.open('userprofile','_self')"> Cancel
+                                </button>
+                            </form>
+                        {% endif %}
+
+                        {% if t == 1 %}
+
+                            <form action="changepassword" id="myform" method="post">
+                                {% csrf_token %}
+                                <h4><span>Enter OTP&nbsp;:</span></h4><input type="text" id="txtotp" name="txtotp"
+                                                                             class="form-control" required>
+
+                                <h4>{{ i.msg }}</h4>
+
+                                <h4><span>New Password&nbsp;:</span></h4><input type="password" id="txtnewpassword"
+                                                                                name="txtnewpassword"
+                                                                                class="form-control" required>
+                                <h4><span>Confirm Password&nbsp;:</span></h4><input type="password"
+                                                                                    id="txtconfirmpassword"
+                                                                                    class="form-control"
+                                                                                    required>
+                                <button id="btnsubmit" type="submit" class="btn  bt" onclick="return g()"> Save
+                                </button>
+                                <button id="btncancel" type="button" class="btn bt "
+                                        onclick="window.open('userprofile','_self')"> Cancel
+                                </button>
+                            </form>
+                        {% endif %}
+
+
+                    </div>
+                    {% if t == 2 %}
+                        <h4>{{ i.msg }}</h4>
+                    {% endif %}
+
+                    <div id="div3">
+                        {% if t == 0 %}
+                            <form action="subscriptions" id="myform3" method="post">
+                                {% csrf_token %}
+                                <h4><span> Subscriiption Id:&nbsp;&nbsp; </span>{{ d.subscriptionid }}</h4>
+                                <br>
+                                <h4><span> Plan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</span>{{ d.plan }}
+                                </h4>
+                                <br>
+                                <h4><span> Plan valid till&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;</span>{{ d.enddate }}
+                                </h4>
+                                <br>
+                                <h4><span> Amount paid &nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</span>{{ d.balance }}</h4>
+                                <br>
+
+                                {% if d.status == '1' %}
+                                    <h4><span> Plan status &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;</span>Active
+                                    </h4>
+
+                                {% else %}
+                                    <h4><span> Plan status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; :&nbsp;&nbsp;</span>Inactive
+                                    </h4>
+                                {% endif %}
+
+                                <h4>{{ i.msg }}</h4>
+                                <br>
+                                <button id="btnotp" type="submit" class="btn bt "
+                                > Change Plan/Reniew
+                                </button>
+                                <button id="btncancel" type="button" class="btn bt "
+                                        onclick="window.open('userprofile','_self')"> Cancel
+                                </button>
+                            </form>
+                        {% endif %}
+
+                    </div>
+                    <div>
+                        {% if t == 3 %}
+                            <form action="subscriptions_renew" id="myform3" method="post">
+                                {% csrf_token %}
+                                <h4><span> Subscription Id:&nbsp;&nbsp; </span>{{ d.subscriptionid }}</h4>
+                                <br>
+                                <h4><span>Select plan :</span></h4>
+                                <select class="form-control" id="txtplan" name="txtplan" onclick="t()">
+                                    <option>Basic</option>
+                                    <option>Standard</option>
+                                    <option>Premium</option>
+                                </select>
+                                <br>
+
+
+                                <h4><span> Amout to be paid :</span></h4>
+                                <h4 id="amountpay"></h4>
+
+
+                                <h4>{{ i.msg }}</h4>
+                                <br>
+                                <button id="btnotp" type="submit" class="btn bt "
+                                > Proceed to pay
+                                </button>
+                                <button id="btncancel" type="button" class="btn bt "
+                                        onclick="window.open('userprofile','_self')"> Cancel
+                                </button>
+                            </form>
+                        {% endif %}
+                        {% if t == 4 %}
+                            <form action="subscriptions_pay" id="myform4" method="post">
+                                {% csrf_token %}
+                                <h4><span> Subscription Id:&nbsp;&nbsp; </span>{{ d.subscriptionid }}</h4>
+                                <br>
+                                <h4><span>Selected plan :</span></h4>
+                                <input type="text" readonly class="form-control" id="txtplan" name="txtplan"
+                                       value="{{ d.plan }}">
+
+                                <br>
+
+
+                                <h4><span> Amount to be paid :</span></h4>
+                                <input type="text" readonly class="form-control" id="txtamount" name="txtamount"
+                                       value="{{ d.amount }}">
+                                <br>
+                                <h4>Payment method</h4>
+                                <br>
+                                <h4><span> Name on card :</span></h4>
+                                <input type="text" readonly class="form-control" id="txtcardname" name="txtcardname"
+                                       value="{{ d.cardname }}">
+
+                                <h4><span> Card number :</span></h4>
+                                <input type="text" readonly class="form-control" id="txtcardnumber" name="txtcardnumber"
+                                       value="{{ d.cardnumber }}">
+
+                                <h4><span> CVV :</span></h4>
+                                <input type="text" readonly class="form-control" id="txtcvv" name="txtcvvr"
+                                       value="{{ d.cvv }}">
+
+                                <h4><span>Card expiry date :</span></h4>
+                                <input type="text" readonly class="form-control" id="txtcardexpdate" name="txtexpdate"
+                                       value="{{ d.cardexpdate }}">
+
+                                <br>
+                                <button id="btnpay" type="submit" class="btn bt "
+                                > Pay Now
+                                </button>
+                                <button id="btncancel" type="button" class="btn bt "
+                                        onclick="window.open('userprofile','_self')"> Cancel
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </td>
+
+            </tr>
+        </table>
+        {% if js == 1 %}
+            <script>f1()</script>
+        {% endif %}
+        {% if js == 2 %}
+            <script>h1()</script>
+        {% endif %}
+
+
+    </div>
+</div>
+</body>
+</html>

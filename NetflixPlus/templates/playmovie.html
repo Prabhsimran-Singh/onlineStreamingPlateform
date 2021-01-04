@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + : Home Page</title>
+    <script src="{% static "bootstrap/jquery-3.5.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.validate.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            background-color: black;
+        }
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 1000px;
+        }
+
+        #stk {
+            position: sticky;
+            overflow: hidden;
+            top: 0;
+
+            z-index: 10;
+
+
+        }
+
+        #firstimage {
+            width: 100%;
+            height: 600px;
+            float: right;
+            margin-top: -80px;
+
+            background-image: url("../static/media/maxresdefault_edit_final.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        #firstvideo {
+            width: 100%;
+            height: 600px;
+            float: right;
+            margin-top: -80px;
+
+            background-image: url("../static/media/maxresdefault_edit_final.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+             }
+
+
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('#myform').validate();
+            var x = screen.availHeight
+
+            document.getElementById("mainrow").style.height = (x / 3) + "px";
+        });
+
+        function bigImg(x) {
+            document.getElementById("firstimage").id = "firstvideo";
+
+        }
+
+        function normalImg(x) {
+            document.getElementById("firstvideo").id = "firstimage";
+        }
+    </script>
+</head>
+<body>
+<div id="dynamic">
+    <div class="row" id="stk">
+        {% include "usertabs.html" %}
+    </div>
+    <div style="width: 100%;height: 600px">
+        <div id="firstimage" class="changable" onmouseover="bigImg(this)" onmouseout="normalImg(this)">
+
+            <div style="margin-top: 270px;margin-left:100px;">
+                <h1 style="color: gold;font-family: 'Cambria Math';font-size: 50px;">{{ e.moviename }}</h1>
+                <button type="button" class="btn  "style="color: white; background-color: rgba(55,54,53,0.93)"><i class="fa fa-play" style="color: white"></i>  Play</button>
+                 <button type="button" class="btn  "style="color: white; background-color: rgba(55,54,53,0.93)"><i class="fa fa-plus" style="color: white"></i>  My List</button>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

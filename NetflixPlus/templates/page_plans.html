@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + - Watch TV Shows and Movies</title>
+    <script src="{% static "bootstrap/jquery-3.5.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        #stk {
+            position: sticky;
+            overflow: hidden;
+            top: 0;
+
+            z-index: 10;
+            background-image: url("../static/whitescreen.PNG");
+
+        }
+
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 1000px;
+        }
+
+        .cl1 {
+            height: 15px;
+        }
+
+        .cl2 {
+            padding-right: 30px;
+            color: red;
+            font-size: 20px;
+        }
+
+        .cl3 {
+            font-size: 17px;
+
+        }
+
+        #table1col_font {
+            padding-top: 30px;
+        }
+
+        .tableCol {
+            width: 130px;
+            background-color: rgba(255, 57, 51, 0.71);
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: white;
+            user-select: none;
+        }
+
+        .table1Col {
+            width: 130px;
+            height: 75px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: #ce8483;
+            border-bottom: solid;
+            border-color: gainsboro;
+            border-width: thin;
+
+
+        }
+
+        .table2Col {
+
+            height: 75px;
+            text-align: left;
+            font-size: 18px;
+            color: black;
+            border-bottom: solid;
+            border-color: gainsboro;
+            border-width: thin;
+
+        }
+
+
+    </style>
+    <script>
+        var selected = 0;
+
+
+        function f1() {
+            selected = 1;
+            document.getElementById("txtplan").value = "Basic"
+            document.getElementById("col1").style.backgroundColor = "red";
+            document.getElementById("col2").style.backgroundColor = "rgba(255,57,51,0.71)";
+            document.getElementById("col3").style.backgroundColor = "rgba(255,57,51,0.71)";
+
+            var a = document.getElementsByClassName("A");
+            for (var i = 0; i < a.length; i++) {
+                a[i].style.color = "red";
+            }
+            var b = document.getElementsByClassName("B");
+            for (var i = 0; i < b.length; i++) {
+                b[i].style.color = "#ce8483";
+            }
+            var c = document.getElementsByClassName("C");
+            for (var i = 0; i < c.length; i++) {
+                c[i].style.color = "#ce8483";
+            }
+
+
+        };
+
+        function f2() {
+            selected = 1;
+            document.getElementById("txtplan").value = "Standard"
+            document.getElementById("col2").style.backgroundColor = "red";
+            document.getElementById("col1").style.backgroundColor = "rgba(255,57,51,0.71)";
+            document.getElementById("col3").style.backgroundColor = "rgba(255,57,51,0.71)";
+
+            var a = document.getElementsByClassName("A");
+            for (var i = 0; i < a.length; i++) {
+                a[i].style.color = "#ce8483";
+            }
+            var b = document.getElementsByClassName("B");
+            for (var i = 0; i < b.length; i++) {
+                b[i].style.color = "red";
+            }
+            var c = document.getElementsByClassName("C");
+            for (var i = 0; i < c.length; i++) {
+                c[i].style.color = "#ce8483";
+            }
+
+        };
+
+        function f3() {
+            selected = 1;
+            document.getElementById("txtplan").value = "Premium"
+
+            document.getElementById("col3").style.backgroundColor = "red";
+            document.getElementById("col1").style.backgroundColor = "rgba(255,57,51,0.71)";
+            document.getElementById("col2").style.backgroundColor = "rgba(255,57,51,0.71)";
+
+            var a = document.getElementsByClassName("A");
+            for (var i = 0; i < a.length; i++) {
+                a[i].style.color = "#ce8483";
+            }
+            var b = document.getElementsByClassName("B");
+            for (var i = 0; i < b.length; i++) {
+                b[i].style.color = "#ce8483";
+            }
+            var c = document.getElementsByClassName("C");
+            for (var i = 0; i < c.length; i++) {
+                c[i].style.color = "red";
+            }
+
+
+        };
+
+        function f() {
+            if (selected == 0) {
+                alert("Please select a plan");
+            }
+
+
+        }
+
+
+        /*   function table_entry() {
+                var table = document.getElementById("table1");
+                var table2 = document.getElementById("table2");
+                var row;
+                var row2;
+                var cell;
+                var cell2;
+
+                for (var j = 2; j < 10; j++) {
+                    for (var i = 0; i < 3; i++) {
+
+                        var text =  {#  e.count1 #} ;
+                    var text2 = {#    d.count1.count2 #};
+                    var data = {#   d.count1.count2 #};
+                    var a = "A";
+                    var classY = "fa " + "fa-check " + "table1Col ";
+                    var classN = "fa " + "fa-times " + "table1Col ";
+                    var classes = "table1Col ";
+
+                    row = table.insertRow(j);
+                    row2 = table2.insertRow(j);
+
+
+                    if (data == "yes") {
+                        var para = document.createElement("I");
+                        para.className = classY + a;
+
+                        document.body.appendChild(para);
+                    } else if (data == "no") {
+                        var para = document.createElement("I");
+                        para.className = classN + a;
+
+                        document.body.appendChild(para);
+                    } else {
+                        var para = document.createElement("P");
+                        para.innerText = text;
+                        para.className = classes + a;
+                        document.body.appendChild(para);
+                    }
+
+                    cell = row.insertCell(i);
+                    cell.append(para);
+
+                    a = String.fromCharCode(a.charCodeAt(0) + 1);
+                }
+                var para2 = document.createElement("P");
+                para2.innerText = text2;
+                para2.className = "table2Col";
+                document.body.appendChild(para2);
+                cell2 = row2.insertCell(0);
+                cell2.append(para2);
+                a = "A";
+            }
+
+        }
+*/
+
+
+    </script>
+</head>
+<body>
+{#   with demo=1 #}
+{# demo  #}
+{#  endwith  #}
+{#   set count = 1 #}
+{#we have to register this other wise it will not work#}
+{#        use another method#}
+<div id="dynamic">
+    <div class="container-fluid" style="height: 100%; width: 100%;  ">
+
+
+        <div id="includedContent">
+            {% include "header.html" %}
+        </div>
+        <div align="center"
+             style=" width:100%;position: relative;border-style: solid; border-color: white;border-top-color: black;border-width: thin">
+
+            <div style=" padding-top: 30px; text-align: left; min-width:1000px;width:60%;height:100%; ">
+
+                <div><span style="font-size: 13px" class="cl1">STEP 1 OF 3</span></div>
+                <div><span class="cl1" style="font-size:25px;font-weight: bold ">Choose the plan right for you.</span>
+                </div>
+                <div><span class="cl1" style="font-size: 15px">Downgrade or upgrade at any time</span></div>
+                <br>
+                <br>
+                <div class="row" id="stk">
+                    <div class="col-sm-12">
+                        <table style="height: 130px; " class="table-responsive;">
+                            <tr>
+                                <td width="460px">
+
+                                </td>
+                                <td class="tableCol" id="col1" onclick="f1()">
+                                    Basic
+                                </td>
+                                <td width="20px;">
+
+                                </td>
+                                <td class="tableCol" id="col2" onclick="f2()">
+                                    Standard
+                                </td>
+                                <td width="20px">
+
+                                </td>
+                                <td class="tableCol" id="col3" onclick="f3()">
+                                    Premium
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table-responsive table">
+
+                            <tr>
+
+                                <td width="440px">
+                                    <table id="table2">
+                                        {% for  i in e %}
+                                            <tr>
+                                                <td class="table2Col">{{ i.0 }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </table>
+                                </td>
+                                <td>
+                                    <table id="table1" border="black">
+                                        {% for  t in d %}
+
+                                            <table style="float: left;margin-right: 30px ">
+                                                {% for j in t %}
+                                                    {% if j == "yes" %}
+                                                        <tr>
+                                                            <td class="fa fa-check table1Col" id="table1col_font"></td>
+                                                        </tr>
+
+                                                    {% elif j == "no" %}
+                                                        <tr>
+                                                            <td class="fa fa-times table1Col" id="table1col_font"></td>
+                                                        </tr>
+
+                                                    {% else %}
+                                                        <tr>
+                                                            <td class="table1Col">{{ j }}</td>
+                                                        </tr>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </table>
+
+                                        {% endfor %}
+                                    </table>
+
+                                </td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            <br>
+            <form action="page3" method="post">
+                {% csrf_token %}
+                <input type="text" name="txtplan" id="txtplan" required hidden>
+
+                <h1>
+                    <button type="submit" class="btn btn-danger" onclick="f()"
+                            style="width:350px;height:50px;  font-size: 17px; text-align: center">CONTINUE
+                    </button>
+                </h1>
+            </form>
+        </div>
+
+
+    </div>
+
+
+</div>
+</div>
+
+</body>
+</html>

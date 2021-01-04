@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + - Watch TV Shows and Movies</title>
+    <script src="{% static "bootstrap/jquery-3.5.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.validate.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 600px;
+        }
+
+        .tablerowheight {
+            height: 20px;
+        }
+
+        .inputwidth {
+            width: 100%;
+        }
+
+    </style>
+    <script>
+
+
+        $(document).ready(function () {
+            $('#myform').validate();
+
+
+        });
+
+        function f() {
+            $('#myform').validate();
+            var date = document.getElementById("txtdate").value;
+            var cardnumber = document.getElementById("txtcardnumber").value;
+            var g1 = new Date();
+            if (cardnumber.length != 12) {
+                alert("Enter valid card number");
+                return false;
+            } else if (new Date(date).getTime() < new Date(g1).getTime()) {
+                alert("Card expiry date invalid");
+                return false;
+            }
+            return true;
+
+        };
+
+    </script>
+</head>
+<body>
+
+<div id="dynamic">
+    <div class="container-fluid" style="height: 100%; width: 100%;  ">
+
+
+        <div id="includedContent">
+            {% include "header.html" %}
+        </div>
+        <div align="center"
+             style=" width:100%;position: relative;border-style: solid; border-color: white;border-top-color: black;border-width: thin">
+
+            <div style=" padding-top: 30px; text-align: left; min-width:1000px;width:60%;height:100%; ">
+
+                <div><span style="font-size: 13px" class="cl1">STEP 3 OF 3</span></div>
+                <div><span class="cl1" style="font-size:25px;font-weight: bold ">Enter Your Payment Details</span>
+                </div>
+                <div><span class="cl1" style="font-size: 15px">One last step before you get to enjoy your favourite shows and movies</span>
+                </div>
+
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form action="userpayment" method="post" id="myform">
+                            {% csrf_token %}
+                            <div align="center">
+                                <table class="table-responsive " style="width: 600px">
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Card Holder Name
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control inputwidth" data-rule-required="true"
+                                                   data-msg-required="Please enter name" name="txtname">
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            Credit Card Number
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control inputwidth" data-rule-required="true"
+                                                   data-rule-number="true" data-msg-required="Please enter number"
+                                                   maxlength="16" minlength="16"
+                                                   name="txtcardnumber">
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            CVV (3- Digit code)
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control  inputwidth"
+                                                   data-rule-required="true" maxlength="3" minlength="3"
+                                                   data-msg-required="Please enter code" name="txtcode">
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Valid upto
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="month" class="form-control inputwidth"
+                                                   data-rule-required="true"
+                                                   data-msg-required="Please select date" name="txtdate" id="txtdate"
+                                            >
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Total Amount
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            {{ d }}
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+
+
+                                </table>
+                            </div>
+
+
+                            <br>
+                            <br>
+                            <div align="center">
+                            <h1>
+                                <button type="submit" class="btn btn-danger" onclick="return f()"
+                                        style="width:350px;height:50px;  font-size: 17px; text-align: center">Pay
+                                </button>
+                            </h1>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>

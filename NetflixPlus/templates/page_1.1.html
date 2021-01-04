@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix +</title>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.min.js"%}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 600px;
+        }
+
+        .cl1 {
+            height: 15px;
+        }
+
+        .cl2 {
+            padding-right: 30px;
+            color: red;
+            font-size: 20px;
+        }
+
+        .cl3 {
+            font-size: 17px;
+
+        }
+
+    </style>
+
+</head>
+<body>
+<div id="dynamic">
+    <div class="container-fluid" style="height: 100%; width: 100%; ">
+
+
+        <div id="includedContent">{% include "header.html" %}</div>
+        <div align="center"
+             style=" width:100%;position: relative;border-style: solid; border-color: white;border-top-color: black;border-width: thin">
+
+            <div align="center" style=" padding-top: 100px; text-align: center; width:350px;height:100%;">
+
+                <div><i class="fa fa-check-circle" style="color: red; font-size:70px"></i></div>
+                <br>
+                <div><span style="font-size: 15px">STEP 1 OF 3</span></div>
+                <div><span style="font-size:25px;font-weight: bold ">Choose your plan.</span></div>
+                <br><br>
+
+
+                <table style="width:310px;text-align: justify;  margin-left: 20px">
+                    <tr>
+                        <td>
+                            <i class="fa fa-check cl2"></i>
+                        </td>
+                        <td>
+                            <span class="cl3">No commitments, cancel anytime.</span>
+                        </td>
+                    </tr>
+                    <tr class="cl1">
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-check cl2"></i>
+                        </td>
+                        <td>
+                            <span class="cl3">Everything on Netflix Plus for one low price.</span>
+                        </td>
+                    </tr>
+                    <tr class="cl1">
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-check cl2"></i>
+                        </td>
+                        <td>
+                            <span class="cl3">No ads and no extra fees. Ever. </span>
+                        </td>
+                    </tr>
+
+                </table>
+
+
+                <br>
+                <br>
+                <h1>
+                    <button type="button" class="btn btn-danger" onclick="window.open('page2','_self')"
+                            style="width:350px;height:50px;  font-size: 17px; text-align: center">SEE THE PLANS
+                    </button>
+                </h1>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

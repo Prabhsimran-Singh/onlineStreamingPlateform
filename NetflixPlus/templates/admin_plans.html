@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + - Admin</title>
+    <script src="{% static "bootstrap/jquery-3.5.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.validate.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 1000px;
+        }
+
+        #table_main {
+
+            height: 100%;
+        }
+
+        #scroller {
+
+            overflow: auto;
+
+
+            height: 200px;
+            width: 900px;
+        }
+
+        .colwidth {
+            width: 200px;
+        }
+
+        .colheight {
+            height: 20px;
+        }
+
+        .innerwidth {
+            width: 50px;
+        }
+    </style>
+    <script>
+
+
+        $(document).ready(function () {
+            $('#myform').validate();
+
+        });
+    </script>
+</head>
+<body>
+<div id="dynamic">
+    {% include "admin_uppertabs.html" %}
+    <div class="container">
+        <div align="right" style="background-color: red;width: 100%">
+            <h2 style=" color: white;margin-right: 20px">Welcome {{ ar.msg }}</h2>
+        </div>
+        <table border="black" class="table" id="table_main">
+
+            <tr>
+                <td width="200px" style="background-color: red">
+                    {% include "admin_tabs.html" %}
+                </td>
+                <td>
+                    <div align="center">
+                        <h3>Edit Plans</h3>
+
+
+                        <form id="myform" action="admin_plans_save" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <br>
+                            <br>
+
+                            <table>
+                                <tr class="colheight">
+                                    <td>
+                                        <h5><b>Basic Plan details</b></h5>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                       Monthly Price:
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="text" class="form-control " data-rule-required="true"
+                                               value="{{ d1.price }}"
+                                               data-msg-required="Please enter Price" name="txtprice"
+                                               >
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        HD available:
+                                    </td>
+                                    <td class="colwidth">
+                                        <select class="form-control "  data-rule-required="true" name="txthd">
+                                            {% if d1.hd == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Ultra HD:
+                                    </td>
+                                    <td class="colwidth">
+                                        <select class="form-control " data-rule-required="true" name="txtuhd">
+                                          {% if d1.uhd == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        Watch on Laptop or TV:
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtwatchlaptop">
+                                           {% if d1.watchlaptop == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Watch on Mobile or Tablet:
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtwatchmobile">
+                                            {% if d1.watchmobile == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        Screen Limit:
+                                    </td>
+                                    <td class="colwidth">
+                                         <input type="text" value="{{ d1.screenlimit }}" class="form-control" name="txtscreenlimit"  data-rule-required="true">
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Unlimited TV shows:
+
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtunlimitedshows">
+                                           {% if d1.unlimitedshows == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+
+                                    <td class="colwidth">
+                                        Smart Review:
+
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtsmartreview">
+                                            {% if d1.smartreviews == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+
+                                        Cancel anytime:
+                                    </td>
+                                    <td class="colwidth">
+
+                                        <select class="form-control " data-rule-required="true" name="txtcancel">
+                                            {% if d1.cancelanytime == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+
+                                    <td class="colwidth">
+
+
+                                    </td>
+                                    <td class="colwidth">
+
+
+                                    </td>
+                                </tr>
+                             <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                             <tr class="colheight">
+                                    <td>
+                                        <h5><b>Standard Plan details</b></h5>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                       Monthly Price:
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="text" class="form-control " data-rule-required="true"
+                                               value="{{ d2.price }}"
+                                               data-msg-required="Please enter Price" name="txtprice1"
+                                               >
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        HD available:
+                                    </td>
+                                    <td class="colwidth">
+                                        <select class="form-control "  data-rule-required="true" name="txthd1">
+                                            {% if d2.hd == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Ultra HD:
+                                    </td>
+                                    <td class="colwidth">
+                                        <select class="form-control " data-rule-required="true" name="txtuhd1">
+                                          {% if d2.uhd == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        Watch on Laptop or TV:
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtwatchlaptop1">
+                                           {% if d2.watchlaptop == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Watch on Mobile or Tablet:
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtwatchmobile1">
+                                            {% if d2.watchmobile == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        Screen Limit:
+                                    </td>
+                                    <td class="colwidth">
+                                         <input type="text" value="{{ d2.screenlimit }}" class="form-control" name="txtscreenlimit1"  data-rule-required="true">
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Unlimited TV shows:
+
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtunlimitedshows1">
+                                           {% if d2.unlimitedshows == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+
+                                    <td class="colwidth">
+                                        Smart Review:
+
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtsmartreview1">
+                                            {% if d2.smartreviews == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+
+                                        Cancel anytime:
+                                    </td>
+                                    <td class="colwidth">
+
+                                        <select class="form-control " data-rule-required="true" name="txtcancel1">
+                                            {% if d2.cancelanytime == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+
+                                    <td class="colwidth">
+
+
+                                    </td>
+                                    <td class="colwidth">
+
+
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+
+                             <tr class="colheight">
+                                    <td>
+                                        <h5><b>Premium Plan details</b></h5>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                       Monthly Price:
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="text" class="form-control " data-rule-required="true"
+                                               value="{{ d3.price }}"
+                                               data-msg-required="Please enter Price" name="txtprice2"
+                                               >
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        HD available:
+                                    </td>
+                                    <td class="colwidth">
+                                        <select class="form-control "  data-rule-required="true" name="txthd2">
+                                            {% if d3.hd == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Ultra HD:
+                                    </td>
+                                    <td class="colwidth">
+                                        <select class="form-control " data-rule-required="true" name="txtuhd2">
+                                          {% if d3.uhd == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        Watch on Laptop or TV:
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtwatchlaptop2">
+                                           {% if d3.watchlaptop == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Watch on Mobile or Tablet:
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtwatchmobile2">
+                                            {% if d3.watchmobile == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        Screen Limit:
+                                    </td>
+                                    <td class="colwidth">
+                                         <input type="text" value="{{ d3.screenlimit }}" class="form-control" name="txtscreenlimit2"  data-rule-required="true">
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Unlimited TV shows:
+
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtunlimitedshows2">
+                                           {% if d3.unlimitedshows == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+
+                                    <td class="colwidth">
+                                        Smart Review:
+
+                                    </td>
+                                    <td class="colwidth">
+                                         <select class="form-control " data-rule-required="true" name="txtsmartreview2">
+                                            {% if d3.smartreviews == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+
+                                        Cancel anytime:
+                                    </td>
+                                    <td class="colwidth">
+
+                                        <select class="form-control " data-rule-required="true" name="txtcancel2">
+                                            {% if d3.cancelanytime == "yes" %}
+                                            <option selected>yes</option>
+                                            <option>no</option>
+                                            {% else %}
+                                            <option >yes</option>
+                                            <option selected>no</option>
+                                            {% endif %}
+                                        </select>
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+
+                                    <td class="colwidth">
+
+
+                                    </td>
+                                    <td class="colwidth">
+
+
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-danger"
+                                    style="width:250px;height:50px;  font-size: 17px; text-align: center">Save
+                            </button>
+
+                                                  </form>
+
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6439bcb5-fb07-4554-911d-3e610ccad093" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1YyhC9uUxXj82pC81RVAaN4t925" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="SQL Dialects" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Simran's PC\PycharmProjects\NetflixPlus\static" />
+      <recent name="C:\Users\Simran's PC\PycharmProjects\NetflixPlus\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Simran's PC\PycharmProjects\NetflixPlus\static" />
+      <recent name="C:\Users\Simran's PC\PycharmProjects\NetflixPlus\static\media" />
+      <recent name="C:\Users\Simran's PC\PycharmProjects\NetflixPlus\static\bootstrap" />
+      <recent name="C:\Users\Simran's PC\PycharmProjects\NetflixPlus" />
+      <recent name="C:\Users\Simran's PC\PycharmProjects\NetflixPlus\templates" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.test.html">
+    <configuration name="test.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/NetflixPlus/templates/test.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="NetflixPlus" type="Python.DjangoServer" factoryName="Django server">
+      <module name="NetflixPlus" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.test.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6439bcb5-fb07-4554-911d-3e610ccad093" name="Default Changelist" comment="" />
+      <created>1583920611906</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583920611906</updated>
+      <workItem from="1583920964730" duration="137000" />
+      <workItem from="1583932889344" duration="2819000" />
+      <workItem from="1584075045469" duration="2879000" />
+      <workItem from="1585464748161" duration="1074000" />
+      <workItem from="1586115405754" duration="34000" />
+      <workItem from="1587031762376" duration="2232000" />
+      <workItem from="1587104309066" duration="1182000" />
+      <workItem from="1587454669960" duration="56187000" />
+      <workItem from="1587794570343" duration="19803000" />
+      <workItem from="1587880744761" duration="9050000" />
+      <workItem from="1587966289954" duration="23860000" />
+      <workItem from="1588051365235" duration="21245000" />
+      <workItem from="1588142537129" duration="16953000" />
+      <workItem from="1588311969936" duration="3859000" />
+      <workItem from="1588345325613" duration="6721000" />
+      <workItem from="1588396488633" duration="3191000" />
+      <workItem from="1588485633628" duration="17962000" />
+      <workItem from="1588575655828" duration="3800000" />
+      <workItem from="1588589722600" duration="5028000" />
+      <workItem from="1588684264863" duration="20258000" />
+      <workItem from="1588834406624" duration="4762000" />
+      <workItem from="1589033965709" duration="3400000" />
+      <workItem from="1589111050242" duration="16087000" />
+      <workItem from="1589169286316" duration="34357000" />
+      <workItem from="1589351881722" duration="23090000" />
+      <workItem from="1589650735990" duration="837000" />
+      <workItem from="1589727512697" duration="3622000" />
+      <workItem from="1590171888992" duration="406000" />
+      <workItem from="1590299167750" duration="2693000" />
+      <workItem from="1590679794254" duration="1263000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="361" y="75" key="#Deployment" timestamp="1587482286249">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="75" key="#Deployment/0.0.1536.824@0.0.1536.824" timestamp="1587482286249" />
+    <state x="361" y="75" key="#SQL_Dialects" timestamp="1587754625707">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="75" key="#SQL_Dialects/0.0.1536.824@0.0.1536.824" timestamp="1587754625707" />
+    <state x="526" y="223" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587837888159">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="526" y="223" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1587837888159" />
+    <state x="499" y="163" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585464986862">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="163" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824@0.0.1536.824" timestamp="1585464986862" />
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1586115437516">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1586115437516" />
+    <state x="279" y="58" key="SettingsEditor" timestamp="1587483558757">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="279" y="58" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1587483558757" />
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog" timestamp="1590679793089">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="477" y="241" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1590679793089" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1590318172098">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1590318172098" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/myfunctions.py</url>
+          <line>1896</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

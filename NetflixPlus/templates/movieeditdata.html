@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + - Admin</title>
+    <script src="{% static "bootstrap/jquery-3.5.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.validate.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 1000px;
+        }
+
+        #table_main {
+
+            height: 100%;
+        }
+
+        #scroller {
+
+            overflow: auto;
+
+
+            height: 200px;
+            width: 900px;
+        }
+
+        .colwidth {
+            width: 200px;
+        }
+
+        .colheight {
+            height: 20px;
+        }
+
+        .innerwidth {
+            width: 50px;
+        }
+    </style>
+    <script>
+
+
+        $(document).ready(function () {
+            $('#myform').validate();
+
+        });
+    </script>
+</head>
+<body>
+<div id="dynamic">
+    {% include "admin_uppertabs.html" %}
+    <div class="container">
+        <div align="right" style="background-color: red;width: 100%">
+            <h2 style=" color: white;margin-right: 20px">Welcome {{ ar.msg }}</h2>
+        </div>
+        <table border="black" class="table" id="table_main">
+
+            <tr>
+                <td width="200px" style="background-color: red">
+                    {% include "admin_tabs.html" %}
+                </td>
+                <td>
+                    <div align="center">
+                        <h3>Edit Movie</h3>
+                        <div id="scroller">
+
+
+                            <table class="table" style="width: 1800px">
+
+                                <tr>
+                                    <th>
+                                        button
+                                    </th>
+                                    {% for j in e %}
+                                        <th>
+                                            {{ j.0 }}
+                                        </th>
+                                    {% endfor %}
+                                </tr>
+                                {% for i in d %}
+                                    <tr>
+                                        {% for t in i %}
+                                            {% if forloop.counter == 1 %}
+                                                <td><a style="color: black" href="movieedit_data?movieid={{ t }}"><i
+                                                        class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                            {% else %}
+                                                <td>{{ t }}</td>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </tr>
+                                {% endfor %}
+                            </table>
+
+                        </div>
+
+                        <form id="myform" action="movieedit_data_save" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <br>
+                            <br>
+
+                            <table>
+                                <tr>
+                                    <td class="colwidth">
+                                        Movie Name:
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="text" class="form-control " data-rule-required="true"
+                                               value="{{ d1.moviename }}"
+                                               data-msg-required="Please enter movie name" name="txtmoviename"
+                                               readonly="true">
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        Cast Names:
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="text" class="form-control " data-rule-required="true"
+                                               value="{{ d1.cast }}"
+                                               data-msg-required="Please enter cast names" name="txtcast">
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Genre:
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="text" class="form-control " data-rule-required="true"
+                                               value="{{ d1.genre }}"
+                                               data-msg-required="Please enter movie genre" name="txtgenre">
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+                                        Director:
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="text" class="form-control " data-rule-required="true"
+                                               value="{{ d1.director }}"
+                                               data-msg-required="Please enter movie director name" name="txtdirector">
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Language:
+
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="text" class="form-control " data-rule-required="true"
+                                               value="{{ d1.language }}"
+                                               data-msg-required="Please enter movie language" name="txtlanguage">
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+
+                                    <td class="colwidth">
+                                        Link:
+
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="text" class="form-control " data-rule-required="true"
+                                               value="{{ d1.link1 }}"
+                                               data-msg-required="Please enter movie link" name="txtlink">
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+
+                                        Runtime(minutes):
+                                    </td>
+                                    <td class="colwidth">
+
+                                        <input type="text" class="form-control " data-rule-required="true"
+                                               value="{{ d1.runtime }}"
+                                               data-msg-required="Please enter movie runtime duration"
+                                               name="txtruntime">
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+
+                                    <td class="colwidth">
+
+
+                                    </td>
+                                    <td class="colwidth">
+
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Description:
+
+                                    </td>
+
+                                    <td class="colwidth" colspan="5">
+                                        <textarea rows="5" cols="2" class="form-control " data-rule-required="true"
+                                                  data-msg-required="Please enter movie description"
+                                                  name="txtdescription" id="txtdescription"
+                                                  style="resize: none">{{ d1.description }}
+                                         </textarea>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Image:
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="file" class="form-control " name="txtfile">
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control " value="{{ d1.filename }}"
+                                               name="txtfiletxt" readonly="true">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control " value="{{ d1.movieid }}"
+                                               name="txtmovieid1" readonly="true" hidden>
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="colwidth">
+                                        Cover Image:
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="file" class="form-control " name="txtcoverfile">
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+
+                                    <td>
+                                        <input type="text" class="form-control " value="{{ d1.coverimage }}"
+                                               name="txtcoverfiletxt" readonly="true">
+                                    </td>
+                                     <td>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                            </table>
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-danger"
+                                    style="width:250px;height:50px;  font-size: 17px; text-align: center">Save
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="window.open('movie_delete?movieid={{ d1.movieid }}&file={{ d1.filename }}&coverfile={{ d1.coverimage }}','_self')"
+                                    style="width:250px;height:50px;  font-size: 17px; text-align: center">Delete
+                            </button>
+                        </form>
+
+                    </div>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+</div>
+</body>
+</html>

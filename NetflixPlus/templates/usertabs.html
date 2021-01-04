@@ -1,0 +1,74 @@
+<style>
+    .tablerowwidth {
+       padding: 20px;
+
+    }
+
+    .tablerow {
+        height: 20px;
+        border-bottom: rgba(255, 24, 24, 0.55);
+
+    }
+    .colwidth{
+        width: 130px;
+
+    }
+
+    a {
+        color: white;
+    }
+
+    a:hover {
+        color: red;
+    }
+     #stk {
+            position: sticky;
+            overflow: hidden;
+            top: 0;
+
+            z-index: 10;
+
+
+        }
+    #stk:hover {
+             transition: 1s;
+            background: rgba(0, 0, 0, 0.3)
+
+        }
+</style>
+
+
+<table style="width:100%;" >
+
+    <tr class="tablerow" id="Home">
+        <td  style="width: 200px">
+        <div  style=" float: left;margin-left: 20px " >
+                <img src="../static/logo.png" style="margin-left:20px ; height: 80px "/>
+         </div>
+        </td>
+
+        <td style="width:100px ">
+            <h4><a href="usermain" class="tablerowwidth"> Home</a></h4>
+        </td>
+        <td class="colwidth">
+            <h4><a href="usermaintvshows"  class="tablerowwidth"> TV Shows</a></h4>
+        </td>
+
+        <td class="colwidth">
+            <h4><a href="usermain"  class="tablerowwidth"> Movies</a></h4>
+        </td>
+
+        <td class="colwidth">
+            <h4><a href="userprofile"  class="tablerowwidth">Profile</a></h4>
+        </td>
+        <td class="colwidth">
+            <h4><a href="usermylistpage"  class="tablerowwidth">My List</a></h4>
+        </td>
+
+         <td>
+            <h4><a href="usersearch"  class="tablerowwidth" style="float: right;padding-right: 50px"><i class="fa fa-search"></i> </a></h4>
+        </td>
+
+    </tr>
+
+</table>

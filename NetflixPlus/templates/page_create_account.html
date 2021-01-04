@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + - Watch TV Shows and Movies</title>
+    <script src="{% static "bootstrap/jquery-3.5.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.validate.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 600px;
+        }
+
+        .tablerowheight {
+            height: 20px;
+        }
+
+        .inputwidth {
+            width: 100%;
+        }
+
+    </style>
+    <script>
+
+
+        $(document).ready(function () {
+            $('#myform').validate();
+
+
+        });
+
+        function f() {
+            $('#myform').validate();
+            var password = document.getElementById("txtpassword").value;
+            var confirmPassword = document.getElementById("txtconfirmpassword").value;
+            var email = document.getElementById("txtemail").value;
+            var confirmemail = document.getElementById("txtconfirmemail").value;
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+             else if (email != confirmemail) {
+                alert("Emails do not match.");
+                return false;
+            }
+            return true;
+
+        };
+
+    </script>
+</head>
+<body>
+
+<div id="dynamic">
+    <div class="container-fluid" style="height: 100%; width: 100%;  ">
+
+
+        <div id="includedContent">
+            {% include "header.html" %}
+        </div>
+        <div align="center"
+             style=" width:100%;position: relative;border-style: solid; border-color: white;border-top-color: black;border-width: thin">
+
+            <div style=" padding-top: 30px; text-align: left; min-width:1000px;width:60%;height:100%; ">
+
+                <div><span style="font-size: 13px" class="cl1">STEP 2 OF 3</span></div>
+                <div><span class="cl1" style="font-size:25px;font-weight: bold ">Enter Your Details</span>
+                </div>
+                <div><span class="cl1" style="font-size: 15px">You are now close to get access to your favourite shows and movies</span>
+                </div>
+
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <form action="page4" method="post" id="myform">
+                            {% csrf_token %}
+                            <div align="center">
+                                <table class="table-responsive " style="width: 600px">
+                                    <tr class="tablerowheight">
+                                        <td>
+                                            <h3 style="color: red">{{ d }}</h3>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Name
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control inputwidth" data-rule-required="true"
+                                                   data-msg-required="Please enter name" name="txtname" >
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            Phone Number
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="text" class="form-control inputwidth" data-rule-required="true"
+                                                   data-rule-number="true" data-msg-required="Please enter number" minlength="10"
+                                                   name="txtphone" >
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Email
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="email" class="form-control  inputwidth"
+                                                   data-rule-required="true" data-rule-email="true"
+                                                   data-msg-required="Please enter email" name="txtemail" id="txtemail" >
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Confirm Email
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="email" class="form-control inputwidth"
+                                                   data-rule-required="true" data-rule-email="true"
+                                                   data-msg-required="Please enter email" name="txtconfirmemail" id="txtconfirmemail"
+                                                   >
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Password
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="password" class="form-control inputwidth"
+                                                   data-rule-required="true" data-msg-required="Please enter passwod"
+                                                   name="txtpassword" id="txtpassword" >
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Confirm Password
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input type="password" class="form-control inputwidth"
+                                                   data-rule-required="true" data-msg-required="Please enter passwod"
+                                                   name="txtconfirmpassword" id="txtconfirmpassword">
+                                        </td>
+                                    </tr>
+                                    <tr class="tablerowheight">
+                                        <td>
+
+                                        </td>
+                                    </tr>
+
+                                </table>
+                            </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            <br>
+            <h1>
+                <button type="submit" class="btn btn-danger" onclick="return f()"
+                        style="width:350px;height:50px;  font-size: 17px; text-align: center">CONTINUE
+                </button>
+                </form>
+            </h1>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + - Admin</title>
+    <script src="{% static "bootstrap/jquery-3.5.0.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.validate.min.js" %}"></script>
+
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        #dynamic {
+            height: 100%;
+            width: 100%;
+            min-height: 630px;
+            min-width: 1000px;
+        }
+
+        #table_main {
+
+            height: 100%;
+        }
+
+        #scroller {
+
+            overflow: auto;
+
+
+            height: 200px;
+            width: 900px;
+        }
+
+        .colwidth {
+            width: 200px;
+        }
+
+        .colheight {
+            height: 20px;
+        }
+
+        .innerwidth {
+            width: 50px;
+        }
+    </style>
+    <script>
+
+
+        $(document).ready(function () {
+            $('#myform').validate();
+
+           });
+
+
+
+
+    </script>
+</head>
+<body>
+<div id="dynamic">
+    {% include "admin_uppertabs.html" %}
+    <div class="container">
+        <div align="right" style="background-color: red;width: 100%">
+            <h2 style=" color: white;margin-right: 20px">Welcome {{ ar.msg }}</h2>
+        </div>
+        <table border="black" class="table" id="table_main">
+
+            <tr>
+                <td width="200px" style="background-color: red">
+                    {% include "admin_tabs.html" %}
+                </td>
+                <td>
+                    <div align="center">
+                        <h3>Edit Admin</h3>
+
+
+                        <form id="myform" action="admin_deladmin_del" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <br>
+                            <br>
+
+                            <table>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                      Admin ID:
+                                    </td>
+                                    <td class="colwidth">
+                                        <input type="text" class="form-control " data-rule-required="true" value="{{ l.id }}"
+
+                                               data-msg-required="Please enter admin ID" readonly name="txtadminid"
+                                               >
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+
+                                    </td>
+
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="colwidth">
+                                        Admin Username :
+                                    </td>
+                                    <td class="colwidth">
+                                       <input type="text" class="form-control " data-rule-required="true" value="{{ l.name }}"
+
+                                               data-msg-required="Please enter username" name="txtadminname"
+                                              readonly
+                                               >
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+
+                                    </td>
+                                    <td class="colwidth">
+
+                                    </td>
+                                </tr>
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+
+                                <tr class="colheight">
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td class="innerwidth">
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <br>
+                            <br>
+                            <button type="submit" class="btn btn-danger"
+                                    style="width:250px;height:50px;  font-size: 17px; text-align: center">Delete
+                            </button>
+
+                             </form>
+
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        </table>
+    </div>
+
+</div>
+</div>
+</body>
+</html>

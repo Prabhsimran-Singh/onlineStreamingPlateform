@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    {% load static %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Netflix + Login</title>
+    <link rel="stylesheet" href="{% static "bootstrap/bootstrap.min.css" %}">
+    <script src="{% static "bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "bootstrap/jquery.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static "bootstrap/font-awesome.min.css" %}">
+    <script src="{% static "bootstrap/jquery.validate.min.js" %}"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        #dynamic {
+            background-image: url("../static/netflix-background-9_edit.jpg");
+            height: 100%;
+            width: 100%;
+            background-repeat: no-repeat;
+            background-size: cover;
+            min-height: 630px;
+            min-width: 600px;
+
+        }
+
+        .ht {
+            height: 50px;
+        }
+        .error{
+            color: white;
+        }
+    </style>
+    <script>
+
+
+        $(window).bind("load", function () {
+            document.getElementById("signinbtn").style.visibility = "hidden";
+        });
+         $(document).ready(function () {
+            $('#myform').validate();
+
+
+        });
+        function showpassword() {
+            var x = document.getElementById("Password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+
+        }
+
+
+    </script>
+
+</head>
+<body>
+<div id="dynamic" class="img-fluid">
+    <div class="container-fluid" style="height: 100%; width: 100%; ">
+
+
+        <div id="includedContent">{% include "header.html" %}</div>
+        <div align="center" style=" width:100%;position: relative;">
+
+            <div style="  width: 450px;height:500px; background-color: black; opacity: 1;" class="form-group">
+                <div align="left" style="padding: 60px;">
+                    <h2 style="color: white">Sign In</h2><br>
+                    <form action="userlogin" method="post" id="myform">
+                        {% csrf_token %}
+                        <input type="text" class="form-control ht"
+                               data-rule-required="true"
+                                name="txtemail" placeholder="Enter Username"
+                               style="background-color: #333;color: white">
+                        <br>
+                        <input type="password" class="form-control ht" id="Password" data-rule-required="true"
+                               data-msg-required="Please enter Password" name="txtpassword" placeholder="Enter Password"
+                               style="background-color: #333;color: white ">
+                        <br>
+                        <p style="color: white">{{ ar.msg }}</p>
+                        {% if ar.msg == "Your subscription expired" %}
+                            <p style="color: white">To renew subscription <a href="usersubscriptionrenew">click here</a></p>
+                        {% endif %}
+                        <input type="checkbox" style="size:7px; " onclick="showpassword()"><span style="color: white">&nbsp;Show Password</span>
+                        <br>
+
+                        <br>
+                        <button type="submit"
+                                class="btn btn-danger form-control"
+                                style=" height:50px;  font-size:20px;text-align: center">Sign In
+                        </button>
+                        <br>
+                        <br>
+                        <br>
+                        <a style="color: white" href="user_forgetpassword">Forget password?</a>
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
